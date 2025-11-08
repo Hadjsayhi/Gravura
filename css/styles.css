@@ -61,18 +61,21 @@ body.landing{display:grid; place-items:center; min-height:100dvh;}
   left: 50%;
   transform: translateX(-50%);
   bottom: 16px;
-  width: clamp(260px, 60vw, 720px);
-  height: var(--nav-h, 48px);
-  background: var(--nav-bg, #111);
-  border: 1px solid var(--nav-br, #333);
+
+  width: clamp(280px, 60vw, 760px);
+  height: var(--nav-h);
+
+  background: var(--nav-bg);
+  border: 1px solid var(--nav-br);
   border-radius: 12px;
+
   display: flex;
   align-items: center;
   overflow: hidden;
   z-index: 1000;
 }
 
-/* Tabs */
+/* tabs */
 .bottom-nav a{
   flex: 1 1 0;
   text-align: center;
@@ -81,7 +84,7 @@ body.landing{display:grid; place-items:center; min-height:100dvh;}
   font-weight: 600;
   font-size: 14px;
   padding: 10px 0;
-  border-right: 1px solid #333;     /* ίδιο border πάντα, να μην αλλάζει πλάτος */
+  border-right: 1px solid #333;      /* πάντα ίδιο πάχος -> δεν “πηδάει” */
   transition: color .2s, background .2s;
   box-sizing: border-box;
 }
@@ -92,25 +95,26 @@ body.landing{display:grid; place-items:center; min-height:100dvh;}
   background: #1a1a1a;
 }
 
-/* Active χωρίς αλλαγή border/padding -> δεν κάνει jump */
+/* active: μόνο χρώματα, ΟΧΙ padding/border αλλαγές */
 .bottom-nav a.active{
   background: #f8e36b;
   color: #000;
 }
 
-/* Instagram button: σταθερό πλάτος, δεν επηρεάζει το μοίρασμα */
-.bottom-nav .ig{
-  flex: 0 0 48px;                 /* σταθερό τετράγωνο */
+/* IG κουμπί: σταθερό τετράγωνο, δεν μοιράζεται το flex */
+.bottom-nav .ig-btn{
+  flex: 0 0 48px !important;   /* FIX: δεν αλλάζει πλάτος ποτέ */
+  height: 48px;
   display: grid;
   place-items: center;
-  border-left: 1px solid #333;    /* διαχωριστικό στα αριστερά του */
-  border-right: 0;
-  padding: 0;                     /* καμία αλλαγή ύψους */
+  padding: 0;
+  border-right: none;          /* τελευταίο item */
+  border-left: 1px solid #333; /* divider από το προηγούμενο */
 }
 
-/* Το SVG του IG με μόνιμο gradient */
-.ig svg{ width: 22px; height: 22px; display: block; }
-
+/* IG: να ΜΗΝ κιτρινίζει στο hover, κρατάει το δικό του gradient */
+.bottom-nav .ig-btn:hover{ background:#1a1a1a; }
+.bottom-nav .ig-btn svg{ display:block; width:20px; height:20px; }
 /* — ΑΦΑΙΡΕΣΕ οποιαδήποτε άλλη δήλωση .bottom-nav (π.χ. sticky) — */
 
 /* ===== About (ό,τι ήδη έχεις, κρατώντας αυτά τα blocks) ===== */
