@@ -1,0 +1,115 @@
+/* Reset μικρό & μεταβλητές */
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+:root{
+  --bg: #0f0f10;
+  --text: #f2f2f2;
+  --muted: #cfcfcf;
+  --btn-bg: #ffffff;
+  --btn-fg: #000000;
+}
+
+/* Γενικά */
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* ===== Landing (index.html) ===== */
+body.landing {
+  display: grid;
+  place-items: center;
+  min-height: 100dvh;
+}
+
+.brand-button {
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  color: var(--bg);
+  background: var(--btn-bg);
+  padding: clamp(1rem, 2.5vw, 1.25rem) clamp(2rem, 5vw, 3rem);
+  border-radius: 999px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 8px 30px rgba(0,0,0,.2);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.brand-button:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.25); }
+.brand-button:active { transform: translateY(0); }
+
+/* ===== Home (home.html) ===== */
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  overflow: clip;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover;
+  filter: saturate(1.05) contrast(1.05);
+  transform: scale(1.02);
+}
+.hero::after {
+  /* ελαφρύ dark overlay για να “γράφει” το κείμενο */
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+}
+
+.hero-inner {
+  position: relative;
+  z-index: 1;
+  height: 100dvh;
+  padding: clamp(16px, 3vw, 32px);
+  display: grid;
+  align-content: center;
+  gap: clamp(16px, 2.5vw, 24px);
+  text-align: center;
+}
+
+/* Τεράστιο brand τίτλος */
+.brand-xxl {
+  margin: 0;
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  line-height: .9;
+  letter-spacing: .04em;
+  font-size: clamp(48px, 12vw, 160px);
+  text-transform: uppercase;
+}
+
+/* Tagline */
+.tagline {
+  margin: 0 auto;
+  max-width: 60ch;
+  color: var(--muted);
+  font-size: clamp(16px, 2.2vw, 22px);
+}
+
+/* CTAs */
+.cta-row { display: flex; justify-content: center; gap: 12px; }
+
+.btn {
+  display: inline-block;
+  padding: .9rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: .02em;
+  transition: transform .15s ease, opacity .15s ease, box-shadow .15s ease;
+}
+.btn:active { transform: translateY(0); }
+
+.btn-light {
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  box-shadow: 0 10px 30px rgba(0,0,0,.25);
+}
+.btn-light:hover {
+  opacity: .95;
+  transform: translateY(-1px);
+  box-shadow: 0 14px 40px rgba(0,0,0,.32);
+}
