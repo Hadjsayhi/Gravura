@@ -1,124 +1,45 @@
-/* Reset μικρό & μεταβλητές */
-* { box-sizing: border-box; }
-html, body { height: 100%; }
+*{box-sizing:border-box}
+html,body{height:100%}
 :root{
-  --bg: #0f0f10;
-  --text: #f2f2f2;
-  --muted: #cfcfcf;
-  --btn-bg: #ffffff;
-  --btn-fg: #000000;
+  --bg:#0f0f10; --text:#f2f2f2; --muted:#cfcfcf;
+  --btn-bg:#fff; --btn-fg:#000;
 }
+body{margin:0;color:var(--text);background:var(--bg);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
 
-/* Γενικά */
-body {
-  margin: 0;
-  color: var(--text);
-  background: var(--bg);
-  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+/* landing */
+body.landing{display:grid;place-items:center;min-height:100dvh}
+.brand-button{
+  font-family:Montserrat,sans-serif;font-weight:800;letter-spacing:.12em;
+  color:var(--bg);background:var(--btn-bg);text-decoration:none;
+  padding:clamp(1rem,2.5vw,1.25rem) clamp(2rem,5vw,3rem);
+  border-radius:999px;border:1px solid #e5e5e5;
+  box-shadow:0 8px 30px rgba(0,0,0,.2);transition:.15s
 }
+.brand-button:hover{transform:translateY(-2px)}
 
-/* ===== Landing (index.html) ===== */
-body.landing {
-  display: grid;
-  place-items: center;
-  min-height: 100dvh;
-}
+/* hero */
+.hero{position:relative;min-height:100dvh;overflow:clip}
+.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.05)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55))}
+.hero-inner{position:relative;z-index:1;height:100dvh;padding:clamp(16px,3vw,32px);display:grid;align-content:center;gap:clamp(16px,2.5vw,24px);text-align:center}
+.brand-xxl{margin:0;font-family:Montserrat,sans-serif;font-weight:800;line-height:.9;letter-spacing:.04em;font-size:clamp(48px,12vw,160px);text-transform:uppercase}
+.tagline{margin:0 auto;max-width:60ch;color:var(--muted);font-size:clamp(16px,2.2vw,22px)}
+.cta-row{display:flex;justify-content:center;gap:12px}
+.btn{display:inline-block;padding:.9rem 1.4rem;border-radius:999px;text-decoration:none;font-weight:600;letter-spacing:.02em}
+.btn-light{background:var(--btn-bg);color:var(--btn-fg);box-shadow:0 10px 30px rgba(0,0,0,.25)}
 
-.brand-button {
-  font-family: Montserrat, sans-serif;
-  font-weight: 800;
-  text-decoration: none;
-  letter-spacing: 0.12em;
-  color: var(--bg);
-  background: var(--btn-bg);
-  padding: clamp(1rem, 2.5vw, 1.25rem) clamp(2rem, 5vw, 3rem);
-  border-radius: 999px;
-  border: 1px solid #e5e5e5;
-  box-shadow: 0 8px 30px rgba(0,0,0,.2);
-  transition: transform .15s ease, box-shadow .15s ease;
-}
-.brand-button:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,.25); }
-.brand-button:active { transform: translateY(0); }
+/* pages */
+.page{min-height:calc(100dvh - 64px);padding:24px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.gallery img{width:100%;height:260px;object-fit:cover;border-radius:8px}
 
-/* ===== Home (home.html) ===== */
-.hero {
-  position: relative;
-  min-height: 100dvh;
-  overflow: clip;
-}
-.hero-bg {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  object-fit: cover;
-  filter: saturate(1.05) contrast(1.05);
-  transform: scale(1.02);
-}
-.hero::after {
-  /* ελαφρύ dark overlay για να “γράφει” το κείμενο */
-  content: ""; position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
-}
-
-.hero-inner {
-  position: relative;
-  z-index: 1;
-  height: 100dvh;
-  padding: clamp(16px, 3vw, 32px);
-  display: grid;
-  align-content: center;
-  gap: clamp(16px, 2.5vw, 24px);
-  text-align: center;
-}
-
-/* Τεράστιο brand τίτλος */
-.brand-xxl {
-  margin: 0;
-  font-family: Montserrat, sans-serif;
-  font-weight: 800;
-  line-height: .9;
-  letter-spacing: .04em;
-  font-size: clamp(48px, 12vw, 160px);
-  text-transform: uppercase;
-}
-
-/* Tagline */
-.tagline {
-  margin: 0 auto;
-  max-width: 60ch;
-  color: var(--muted);
-  font-size: clamp(16px, 2.2vw, 22px);
-}
-
-/* CTAs */
-.cta-row { display: flex; justify-content: center; gap: 12px; }
-
-.btn {
-  display: inline-block;
-  padding: .9rem 1.4rem;
-  border-radius: 999px;
-  text-decoration: none;
-  font-weight: 600;
-  letter-spacing: .02em;
-  transition: transform .15s ease, opacity .15s ease, box-shadow .15s ease;
-}
-.btn:active { transform: translateY(0); }
-
-.btn-light {
-  background: var(--btn-bg);
-  color: var(--btn-fg);
-  box-shadow: 0 10px 30px rgba(0,0,0,.25);
-}
-.btn-light:hover {
-  opacity: .95;
-  transform: translateY(-1px);
-  box-shadow: 0 14px 40px rgba(0,0,0,.32);
-}
-body { margin:0; padding-bottom:64px; } /* χώρος για το navbar */
+/* bottom nav */
+body{padding-bottom:64px}
 .bottom-nav{
-  position:fixed; left:0; right:0; bottom:0;
-  display:flex; justify-content:space-around; align-items:center;
-  height:64px; background:#111; color:#fff; border-top:1px solid #333;
+  position:fixed;left:0;right:0;bottom:0;height:64px;
+  display:flex;justify-content:space-around;align-items:center;
+  background:#111;border-top:1px solid #333
 }
-.bottom-nav a{ color:#bbb; text-decoration:none; font-weight:600; padding:8px 12px; }
-.bottom-nav a.active{ color:#fff; border-bottom:2px solid #fff; }
-
+.bottom-nav a{color:#bbb;text-decoration:none;font-weight:600;padding:8px 12px}
+.bottom-nav a.active{color:#fff;border-bottom:2px solid #fff}
