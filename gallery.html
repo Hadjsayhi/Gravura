@@ -1,27 +1,33 @@
 <!doctype html>
 <html lang="el">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Gravura — Gallery</title>
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gravura Gallery</title>
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <main class="page">
-    <h1>Gravura Gallery</h1>
-    <section class="gallery">
-      <img src="img/sample1.jpg" alt="">
-      <img src="img/sample2.jpg" alt="">
-      <img src="img/sample3.jpg" alt="">
-    </section>
-  </main>
-
+  <!-- sticky bottom navbar -->
   <nav class="bottom-nav">
-    <a href="gallery.html">γκαλλερυ</a>
+    <a href="gallery.html" class="active">γκαλλερυ</a>
     <a href="home.html" data-home>Gravura</a>
     <a href="contact.html">contact</a>
     <a href="about.html">about</a>
   </nav>
+
+  <main class="page-wrap">
+    <h1 class="page-title">Gravura Gallery</h1>
+
+    <section class="gallery-grid">
+      <!-- άλλαξε την κατάληξη (.jpg/.png) αν χρειάζεται -->
+     
+      <figure><img src="img/landingphoto.jpg" loading="lazy" alt="landingphoto"></figure>
+      <figure><img src="img/smoking.jpg" loading="lazy" alt="smoking"></figure>
+      <figure><img src="img/tasw.jpg" loading="lazy" alt="tasw"></figure>
+      <figure><img src="img/walking.jpg" loading="lazy" alt="walking"></figure>
+      <figure><img src="img/walking1.jpg" loading="lazy" alt="walking1"></figure>
+    </section>
+  </main>
 
   <script src="js/main.js"></script>
 </body>

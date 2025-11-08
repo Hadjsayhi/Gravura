@@ -1,45 +1,274 @@
+/* ========= Reset + Μεταβλητές ========= */
 *{box-sizing:border-box}
 html,body{height:100%}
 :root{
-  --bg:#0f0f10; --text:#f2f2f2; --muted:#cfcfcf;
-  --btn-bg:#fff; --btn-fg:#000;
+  --bg:#0f0f10;          /* φόντο */
+  --text:#f2f2f2;        /* βασικό κείμενο */
+  --muted:#cfcfcf;       /* υποκείμενο κείμενο */
+  --btn-bg:#ffffff;      /* φόντο κουμπιού */
+  --btn-fg:#000000;      /* χρώμα κουμπιού */
+  --nav-bg:#111;         /* φόντο navbar */
+  --nav-br:#333;         /* περίγραμμα navbar */
+  --nav-h: 48px;   /* ίδιο με height του .bottom-nav */
+  --nav-gap: 20px; /* κενό ασφαλείας πάνω από το navbar */
 }
-body{margin:0;color:var(--text);background:var(--bg);
-  font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
 
-/* landing */
-body.landing{display:grid;place-items:center;min-height:100dvh}
+body{
+  margin:0;
+  color:var(--text);
+  background:var(--bg);
+  font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  padding: bottom 250px; /* + χώρος κάτω */
+   padding-bottom: calc(48px + 32px);
+   padding-bottom: calc(var(--nav-h) + var(--nav-gap));
+}
+
+
+/* ========= Landing (index.html) ========= */
+body.landing{
+  display:grid; place-items:center; min-height:100dvh;
+}
 .brand-button{
-  font-family:Montserrat,sans-serif;font-weight:800;letter-spacing:.12em;
-  color:var(--bg);background:var(--btn-bg);text-decoration:none;
+  font-family:Montserrat, sans-serif; font-weight:800; letter-spacing:.12em;
+  text-decoration:none; color:var(--bg); background:var(--btn-bg);
   padding:clamp(1rem,2.5vw,1.25rem) clamp(2rem,5vw,3rem);
-  border-radius:999px;border:1px solid #e5e5e5;
-  box-shadow:0 8px 30px rgba(0,0,0,.2);transition:.15s
+  border-radius:999px; border:1px solid #e5e5e5;
+  box-shadow:0 8px 30px rgba(0,0,0,.2);
+  transition:transform .15s, box-shadow .15s;
 }
-.brand-button:hover{transform:translateY(-2px)}
+.brand-button:hover{transform:translateY(-2px); box-shadow:0 12px 40px rgba(0,0,0,.25)}
 
-/* hero */
-.hero{position:relative;min-height:100dvh;overflow:clip}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.05)}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),rgba(0,0,0,.55))}
-.hero-inner{position:relative;z-index:1;height:100dvh;padding:clamp(16px,3vw,32px);display:grid;align-content:center;gap:clamp(16px,2.5vw,24px);text-align:center}
-.brand-xxl{margin:0;font-family:Montserrat,sans-serif;font-weight:800;line-height:.9;letter-spacing:.04em;font-size:clamp(48px,12vw,160px);text-transform:uppercase}
-.tagline{margin:0 auto;max-width:60ch;color:var(--muted);font-size:clamp(16px,2.2vw,22px)}
-.cta-row{display:flex;justify-content:center;gap:12px}
-.btn{display:inline-block;padding:.9rem 1.4rem;border-radius:999px;text-decoration:none;font-weight:600;letter-spacing:.02em}
-.btn-light{background:var(--btn-bg);color:var(--btn-fg);box-shadow:0 10px 30px rgba(0,0,0,.25)}
+/* ========= Home Hero ========= */
+.hero{position:relative; min-height:100dvh; overflow:clip}
+.hero-bg{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:cover; filter:saturate(1.05) contrast(1.05); transform:scale(1.02);
+}
+.hero::after{
+  content:""; position:absolute; inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.55));
+}
+.hero-inner{
+  position:relative; z-index:1; height:100dvh;
+  padding:clamp(16px,3vw,32px);
+  display:grid; align-content:center; gap:clamp(16px,2.5vw,24px); text-align:center;
+}
+.brand-xxl{
+  margin:0; font-family:Montserrat, sans-serif; font-weight:800; line-height:.9;
+  letter-spacing:.04em; font-size:clamp(48px,12vw,160px); text-transform:uppercase;
+}
+.tagline{margin:0 auto; max-width:60ch; color:var(--muted); font-size:clamp(16px,2.2vw,22px)}
+.cta-row{display:flex; justify-content:center; gap:12px}
+.btn{display:inline-block; padding:.9rem 1.4rem; border-radius:999px; text-decoration:none; font-weight:600; letter-spacing:.02em; transition:transform .15s, opacity .15s, box-shadow .15s}
+.btn-light{background:var(--btn-bg); color:var(--btn-fg); box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.btn-light:hover{opacity:.95; transform:translateY(-1px); box-shadow:0 14px 40px rgba(0,0,0,.32)}
 
-/* pages */
-.page{min-height:calc(100dvh - 64px);padding:24px}
-.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
-.gallery img{width:100%;height:260px;object-fit:cover;border-radius:8px}
+/* ========= Εσωτερικές σελίδες ========= */
+.page-wrap{max-width:1100px; margin:40px auto; padding:0 20px}
+.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px}
+.gallery img{width:100%; height:260px; object-fit:cover; border-radius:12px}
 
-/* bottom nav */
-body{padding-bottom:64px}
+/* ========= Sticky Bottom Navbar (μικρό + με περιθώρια) ========= */
+/* === Sticky Bottom Navbar (τετράγωνο + διαχωριστικά) === */
+/* === Sticky Bottom Navbar (τελείως γωνίες + διαχωριστικά + hover yellow) === */
 .bottom-nav{
-  position:fixed;left:0;right:0;bottom:0;height:64px;
-  display:flex;justify-content:space-around;align-items:center;
-  background:#111;border-top:1px solid #333
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 16px;
+
+  width: clamp(260px, 60vw, 720px);
+  height: 48px;
+
+  background: #111;
+  border: 1px solid #333;
+  border-radius: 10%; /* καθόλου στρογγυλάδα */
+
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  overflow: hidden;
+
+  z-index: 10;
 }
-.bottom-nav a{color:#bbb;text-decoration:none;font-weight:600;padding:8px 12px}
-.bottom-nav a.active{color:#fff;border-bottom:2px solid #fff}
+
+/* Κάθε link */
+.bottom-nav a{
+  flex: 1;
+  text-align: center;
+  color: #bbb;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  padding: 10px 0;
+
+  border-right: 1px solid #333; /* διαχωριστικά */
+  transition: 0.25s; /* smooth hover */
+}
+
+/* Αφαιρούμε το τελευταίο border */
+.bottom-nav a:last-child{
+  border-right: none;
+}
+
+/* Hover → ελαφρύ κίτρινο */
+.bottom-nav a:hover{
+  color: #f8e36b;         /* κιτρινωπή απόχρωση */
+  background: #1a1a1a;   /* ελαφρύ σκούρο φόντο */
+}
+
+/* Active link */
+.bottom
+
+
+/* Ολόκληρη η οθόνη clickable link */
+.landing-click{
+  position: absolute;
+  inset: 0;          /* καλύπτει όλη την οθόνη */
+  display: block;
+}
+/* Landing Page (index) */
+body.landing{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100dvh;
+  background:#0f0f10; /* σκουρο φόντο */
+}
+
+/* Κεντρικό κουμπί */
+.brand-button{
+  font-family:Montserrat, sans-serif;
+  font-weight:800;
+  letter-spacing:0.15em;
+  text-decoration:none;
+  color:#000;
+  background:#fff;
+  padding:1rem 2.5rem;
+  border-radius:999px;
+  border:1px solid #e5e5e5;
+  box-shadow:0 8px 30px rgba(0,0,0,.25);
+  transition:0.25s ease;
+}
+
+.brand-button:hover{
+  transform:translateY(-2px);
+  background:#f2f2f2;
+}
+/* -------- Gallery page -------- */
+.page-wrap{ padding:24px 16px 96px; max-width:1200px; margin:0 auto; }
+.page-title{ margin:8px 0 20px; font-size:clamp(22px,3.5vw,32px); font-weight:800; }
+
+.gallery-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap:14px;
+}
+.gallery-grid figure{
+  margin:0;
+  background:#0b0b0c;
+  border:1px solid #2a2a2a;
+  overflow:hidden;
+}
+.gallery-grid img{
+  width:100%;
+  height:260px;         /* σταθερό ύψος για καθαρό grid */
+  object-fit:cover;     /* κόψιμο χωρίς παραμόρφωση */
+  display:block;
+  transition:transform .2s ease, opacity .2s ease;
+}
+.gallery-grid img:hover{ transform:scale(1.03); opacity:.95; }
+.gallery { display:grid; gap:16px; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); }
+.gallery img { width:100%; height:auto; display:block; }
+.hero-video{
+  position:absolute;
+  top:0; left:0;
+  width:100%; height:100%;
+  object-fit:cover;
+  z-index:-1;
+  filter:brightness(0.55);
+}
+/* --- About page --- */
+.about-hero{
+  display:grid;
+  grid-template-columns: 2fr 1fr;
+  gap: clamp(16px,3vw,32px);
+  align-items: stretch;
+  max-width: 1400px;
+  margin: 32px auto 0;
+  padding: 0 16px 120px; /* χώρος πάνω από navbar */
+}
+.about-hero-media{ margin:0; background:#0b0b0c; overflow:hidden; }
+.about-hero-media img{ width:100%; height:100%; object-fit:cover; display:block; }
+.about-hero-text{ align-self:center; }
+.kicker{
+  font: 600 12px/1.2 Inter,system-ui;
+  letter-spacing:.18em; text-transform:uppercase; color:#bfbfbf; margin:0 0 10px;
+}
+.about-h1{ font: 800 clamp(28px,6vw,64px)/1.02 Montserrat,sans-serif; margin:0 0 8px; }
+.about-sub{ font: 700 clamp(18px,3vw,28px)/1.1 Inter,system-ui; margin:0 0 10px; }
+.about-p{ color:#d3d3d3; margin:0 0 16px; max-width:60ch; }
+
+.btn-outline{
+  display:inline-block; padding:.8rem 1.2rem; text-decoration:none; font-weight:600;
+  border:1px solid #444; color:#fff;
+}
+.btn-outline:hover{ background:#1a1a1a; border-color:#666; }
+
+.about-intro .about-huge{
+  font: 700 clamp(22px,4vw,40px)/1.15 Inter,system-ui; margin:0 0 20px;
+}
+
+.about-card{
+  display:grid; grid-template-columns: 1.3fr 1fr;
+  gap: clamp(16px,3vw,32px);
+  max-width: 1200px; margin: 0 auto 120px; padding: 0 16px;
+}
+.about-card-media{ margin:0; background:#0b0b0c; border:1px solid #2a2a2a; overflow:hidden; }
+.about-card-media img{ width:100%; height:100%; object-fit:cover; display:block; }
+.about-h3{ font:700 clamp(18px,3vw,28px)/1.2 Inter,system-ui; margin:0 0 8px; }
+.link-underline{ color:#fff; text-decoration:underline; text-underline-offset:3px; }
+.link-underline:hover{ color:#f8e36b; }
+
+@media (max-width: 900px){
+  .about-hero, .about-card{ grid-template-columns: 1fr; }
+}
+/* Τίτλος πάνω από την εικόνα */
+.stories-hero{ position:relative; }
+.stories-title{
+  position:absolute; top:24px; left:24px;
+  margin:0; z-index:2;
+  font-weight:800;
+  font-size:clamp(28px,6vw,72px);
+}
+
+/* Ζευγάρι εικόνων με hover-swap */
+.hover-swap{
+  position:relative; display:block; margin:0; overflow:hidden;
+  max-width:100%;
+}
+.hover-swap img{ display:block; width:100%; height:auto; }
+.hover-swap .back{
+  position:absolute; inset:0;
+  opacity:0; transition:opacity .25s ease;
+}
+.hover-swap:hover .back{ opacity:1; }
+.hover-swap:hover .front{ opacity:0; }
+
+
+
+.story-thumb{
+  position:relative; overflow:hidden; width:100%; max-width:1200px;
+  margin:16px auto; aspect-ratio:16/9; /* προσαρμοσμένο ύψος */
+}
+.story-thumb img{
+  position:absolute; inset:0; width:100%; height:100%;
+  object-fit:contain; /* να φαίνεται ολόκληρη */
+  background:#000;    /* γεμίζει το περίσσιο χώρο */
+  display:block;
+  transition:opacity .35s ease;
+}
+
+.story-thumb .back{opacity:0}
+.story-thumb:hover .back{opacity:1}
+.story-thumb:hover .front{opacity:0}
