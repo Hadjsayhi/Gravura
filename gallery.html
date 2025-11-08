@@ -9,11 +9,29 @@
 <body>
   <!-- sticky bottom navbar -->
   <nav class="bottom-nav">
-    <a href="gallery.html" class="active">γκαλλερυ</a>
-    <a href="home.html" data-home>Gravura</a>
-    <a href="contact.html">contact</a>
-    <a href="about.html">about</a>
-  </nav>
+  <a href="home.html" data-home>Home</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+
+  <!-- IG square button (last) -->
+  <a class="ig-btn" href="https://instagram.com/gravura" target="_blank" rel="noopener" aria-label="Instagram">
+    <!-- μόνιμο IG gradient στο ίδιο το SVG -->
+    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+      <defs>
+        <linearGradient id="igGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stop-color="#F58529"/>
+          <stop offset="30%" stop-color="#FEDA77"/>
+          <stop offset="60%" stop-color="#DD2A7B"/>
+          <stop offset="100%" stop-color="#8134AF"/>
+        </linearGradient>
+      </defs>
+      <path fill="url(#igGrad)"
+        d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm5 5a5 5 0 1 0 5 5 5 5 0 0 0-5-5Zm6.5-.25a1.25 1.25 0 1 0 1.25 1.25 1.25 1.25 0 0 0-1.25-1.25Z"/>
+    </svg>
+  </a>
+</nav>
+
 
   <main class="page-wrap">
     <h1 class="page-title">Gravura Gallery</h1>
